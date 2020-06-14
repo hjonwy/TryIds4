@@ -4,6 +4,7 @@
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -21,7 +22,9 @@ namespace IdentityServer
         public void ConfigureServices(IServiceCollection services)
         {
             // uncomment, if you want to add an MVC-based UI
-            //services.AddControllersWithViews();
+            services.AddControllersWithViews();
+
+            services.AddHttpContextAccessor();
 
             var builder = services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Config.Ids)
@@ -39,18 +42,27 @@ namespace IdentityServer
                 app.UseDeveloperExceptionPage();
             }
 
+            //var httpContext = app.ApplicationServices.GetService<HttpContextAccessor>().HttpContext;
+            //var curRequest = httpContext.Request;
+
             // uncomment if you want to add MVC
             //app.UseStaticFiles();
-            //app.UseRouting();
+            app.UseRouting();
+
+            app.Use(async (context, next) => {
+
+
+                await next();
+            });
 
             app.UseIdentityServer();
 
             // uncomment, if you want to add MVC
             //app.UseAuthorization();
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapDefaultControllerRoute();
-            //});
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapDefaultControllerRoute();
+            });
         }
     }
 }
