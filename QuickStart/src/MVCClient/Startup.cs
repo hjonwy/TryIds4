@@ -35,7 +35,7 @@ namespace MVCClient
                 .AddCookie("Cookies")
                 .AddOpenIdConnect("oidc", options =>
                 {
-                    options.Authority = "https://localhost:5001";//this must set to 
+                    options.Authority = "http://localhost:7000";
                     options.RequireHttpsMetadata = false;
 
                     options.ClientId = "mvcclient";

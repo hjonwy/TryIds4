@@ -13,7 +13,7 @@ namespace Client
             Console.WriteLine("Hello World!");
 
             var client = new HttpClient();
-            var disco = await client.GetDiscoveryDocumentAsync("http://localhost:5000");
+            var disco = await client.GetDiscoveryDocumentAsync("http://localhost:7000");
             if (disco.IsError)
             {
                 Console.WriteLine(disco.Error);

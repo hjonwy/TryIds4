@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MVCClient.Models;
+using Newtonsoft.Json.Linq;
 
 namespace MVCClient.Controllers
 {
@@ -22,6 +24,20 @@ namespace MVCClient.Controllers
         public async Task<IActionResult> Index()
         {
             AuthenticateResult result = await HttpContext.AuthenticateAsync();
+
+            var apiClient = new HttpClient();
+            apiClient.SetBearerToken(tokenResponse.AccessToken);
+
+            var response = await apiClient.GetAsync("http://localhost:6000/identity/get");
+            if (!response.IsSuccessStatusCode)
+            {
+                Console.WriteLine(response.StatusCode);
+            }
+            else
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(JArray.Parse(content));
+            }
 
             return View();
         }

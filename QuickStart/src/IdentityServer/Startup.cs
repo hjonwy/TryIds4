@@ -26,13 +26,14 @@ namespace IdentityServer
 
             services.AddHttpContextAccessor();
 
+            //<TODO> use EF to save id/client/api resources
             var builder = services.AddIdentityServer()
                 .AddInMemoryIdentityResources(Config.Ids)
                 .AddInMemoryApiResources(Config.Apis)
                 .AddInMemoryClients(Config.Clients)
                 .AddTestUsers(TestUsers.Users);
 
-            // not recommended for production - you need to store your key material somewhere secure
+            // not recommended for production - you need to store your key material somewhere secure  <TODO>
             builder.AddDeveloperSigningCredential();
         }
 

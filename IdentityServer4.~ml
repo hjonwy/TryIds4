@@ -1813,8 +1813,8 @@ RememberLogin        false
 <XPD:OBJ name="OwnedViews[24]" type="UMLNoteView" guid="rBSC7KDOZk+KK2Fx9/OSmgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Left" type="integer">924</XPD:ATTR>
-<XPD:ATTR name="Top" type="integer">320</XPD:ATTR>
+<XPD:ATTR name="Left" type="integer">772</XPD:ATTR>
+<XPD:ATTR name="Top" type="integer">280</XPD:ATTR>
 <XPD:ATTR name="Width" type="integer">368</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">173</XPD:ATTR>
 <XPD:ATTR name="Text" type="string">client_id        mvcclient
@@ -1833,7 +1833,7 @@ x-client-ver        5.5.0.0
 <XPD:OBJ name="OwnedViews[25]" type="UMLNoteLinkView" guid="/ES4NJ/2V0qrdZkoyUoi5AAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">451,484;924,428</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">428,484;772,407</XPD:ATTR>
 <XPD:REF name="Head">rBSC7KDOZk+KK2Fx9/OSmgAA</XPD:REF>
 <XPD:REF name="Tail">m1rTnNOEGkuFdXhIylhxKwAA</XPD:REF>
 </XPD:OBJ>
