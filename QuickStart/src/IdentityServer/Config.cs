@@ -14,7 +14,10 @@ namespace IdentityServer
             new IdentityResource[]
             { 
                 new IdentityResources.OpenId(),
-                new IdentityResources.Profile()
+                new IdentityResources.Profile(),
+                new IdentityResources.Email(),
+                new IdentityResources.Address(),
+                new IdentityResources.Phone()
             };
 
         public static IEnumerable<ApiResource> Apis =>

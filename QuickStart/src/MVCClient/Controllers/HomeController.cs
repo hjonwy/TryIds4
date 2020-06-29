@@ -52,6 +52,11 @@ namespace MVCClient.Controllers
             return View();
         }
 
+        public IActionResult Test()
+        {
+            return Json("Hello");
+        }
+
         public IActionResult Privacy()
         {
             return View();
@@ -61,6 +66,11 @@ namespace MVCClient.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Logout()
+        {
+            return SignOut("Cookies", "oidc");
         }
     }
 }
