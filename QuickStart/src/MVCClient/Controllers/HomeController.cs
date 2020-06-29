@@ -4,7 +4,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using IdentityModel.Client;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MVCClient.Models;
@@ -21,22 +23,30 @@ namespace MVCClient.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         public async Task<IActionResult> Index()
         {
+            
             AuthenticateResult result = await HttpContext.AuthenticateAsync();
 
-            var apiClient = new HttpClient();
-            apiClient.SetBearerToken(tokenResponse.AccessToken);
+            if (result.Succeeded)
+            {
+                string accessToken = result.Properties.Items[".Token.access_token"];
+                string idToken = result.Properties.Items[".Token.id_token"];
 
-            var response = await apiClient.GetAsync("http://localhost:6000/identity/get");
-            if (!response.IsSuccessStatusCode)
-            {
-                Console.WriteLine(response.StatusCode);
-            }
-            else
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(JArray.Parse(content));
+
+                var apiClient = new HttpClient();
+                apiClient.SetBearerToken(accessToken);
+                var response = await apiClient.GetAsync("http://localhost:6000/identity/get");
+                if (!response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine(response.StatusCode);
+                }
+                else
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(JArray.Parse(content));
+                }
             }
 
             return View();

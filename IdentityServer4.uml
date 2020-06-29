@@ -1432,17 +1432,17 @@ redirect_uri：认证成功后的回调地址，oidc-server.dev会把认证的�
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
 <XPD:ATTR name="Left" type="integer">364</XPD:ATTR>
 <XPD:ATTR name="Top" type="integer">36</XPD:ATTR>
-<XPD:ATTR name="Width" type="integer">388</XPD:ATTR>
+<XPD:ATTR name="Width" type="integer">399</XPD:ATTR>
 <XPD:ATTR name="Height" type="integer">53</XPD:ATTR>
 <XPD:ATTR name="Text" type="string">client has two schemes:
 1. default Cookies authenticate local user
-2. oidc sheme use din challenge stage and to request id from identity server.
+2. oidc sheme use client challenge stage and to request id from identity server.
 </XPD:ATTR>
 </XPD:OBJ>
 <XPD:OBJ name="OwnedViews[7]" type="UMLNoteLinkView" guid="MMuk9Vdg+EyALT2irkjEDgAA">
 <XPD:ATTR name="LineColor" type="string">clMaroon</XPD:ATTR>
 <XPD:ATTR name="FillColor" type="string">$00B9FFFF</XPD:ATTR>
-<XPD:ATTR name="Points" type="Points">266,128;442,88</XPD:ATTR>
+<XPD:ATTR name="Points" type="Points">267,128;446,88</XPD:ATTR>
 <XPD:REF name="Head">MFLlytu80U2+3qBEFYPZ+AAA</XPD:REF>
 <XPD:REF name="Tail">TY3R2xC4/UWG1WdKgqRnKQAA</XPD:REF>
 </XPD:OBJ>
