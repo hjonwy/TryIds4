@@ -26,28 +26,32 @@ namespace MVCClient.Controllers
         [Authorize]
         public async Task<IActionResult> Index()
         {
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+            var apiClient = new HttpClient();
+            apiClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
             
-            AuthenticateResult result = await HttpContext.AuthenticateAsync();
 
-            if (result.Succeeded)
+            //AuthenticateResult result = await HttpContext.AuthenticateAsync();
+
+            //if (result.Succeeded)
+            //{
+            //    string accessToken = result.Properties.Items[".Token.access_token"];
+            //    string idToken = result.Properties.Items[".Token.id_token"];
+
+
+            //var apiClient = new HttpClient();
+            //apiClient.SetBearerToken(accessToken);
+            var response = await apiClient.GetAsync("http://localhost:6000/identity/get");
+            if (!response.IsSuccessStatusCode)
             {
-                string accessToken = result.Properties.Items[".Token.access_token"];
-                string idToken = result.Properties.Items[".Token.id_token"];
-
-
-                var apiClient = new HttpClient();
-                apiClient.SetBearerToken(accessToken);
-                var response = await apiClient.GetAsync("http://localhost:6000/identity/get");
-                if (!response.IsSuccessStatusCode)
-                {
-                    Console.WriteLine(response.StatusCode);
-                }
-                else
-                {
-                    var content = await response.Content.ReadAsStringAsync();
-                    Console.WriteLine(JArray.Parse(content));
-                }
+                Console.WriteLine(response.StatusCode);
             }
+            else
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(JArray.Parse(content));
+            }
+            //}
 
             return View();
         }

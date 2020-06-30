@@ -23,6 +23,7 @@ namespace IdentityServer
         public static IEnumerable<ApiResource> Apis =>
             new ApiResource[] 
             {
+                //name, display name
                 new ApiResource("api1", "My API")
             };
         
