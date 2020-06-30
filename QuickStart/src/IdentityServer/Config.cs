@@ -52,7 +52,8 @@ namespace IdentityServer
                     AllowedGrantTypes = GrantTypes.Code,
                     ClientSecrets = { new Secret("secret".Sha256())},
                     
-                    RequireConsent = false,
+                    RequireConsent = true,
+                    AllowOfflineAccess = true,
                     RequirePkce = true,
 
                     // where to redirect to after login
